@@ -31,7 +31,7 @@ const Footer = ({ setIsOpen }) => (
         <button
           type="button"
           onClick={() => setIsOpen && setIsOpen(true)}
-          className="px-6 sm:px-8 py-3 rounded-full font-bold text-[14px] sm:text-[15px] transition-all duration-300 shadow-[0_4px_16px_rgba(175,117,28,0.4)] cursor-pointer"
+          className="px-6 sm:px-8 py-3 rounded-full font-bold text-[14px] sm:text-[15px] transition-all duration-300 shadow-[0_4px_16px_rgba(175,117,28,0.4)] hover:-translate-y-0.5 cursor-pointer"
           style={{
             background: '#AF751C',
             color: '#ffffff',
@@ -39,10 +39,12 @@ const Footer = ({ setIsOpen }) => (
           }}
           onMouseEnter={e => {
             e.currentTarget.style.background = '#ffffff';
+            e.currentTarget.style.borderColor = '#ffffff';
             e.currentTarget.style.color = '#AF751C';
           }}
           onMouseLeave={e => {
             e.currentTarget.style.background = '#AF751C';
+            e.currentTarget.style.borderColor = '#AF751C';
             e.currentTarget.style.color = '#ffffff';
           }}
         >
@@ -52,20 +54,20 @@ const Footer = ({ setIsOpen }) => (
         <button
           type="button"
           onClick={() => setIsOpen && setIsOpen(true)}
-          className="px-6 sm:px-8 py-3 rounded-full font-bold text-[14px] sm:text-[15px] transition-all duration-300 shadow-sm cursor-pointer"
+          className="px-6 sm:px-8 py-3 rounded-full font-bold text-[14px] sm:text-[15px] transition-all duration-300 shadow-[0_4px_16px_rgba(175,117,28,0.4)] hover:-translate-y-0.5 cursor-pointer"
           style={{
-            background: 'transparent',
+            background: '#AF751C',
             color: '#ffffff',
-            border: '2px solid rgba(255, 255, 255, 0.4)',
+            border: '2px solid #AF751C',
           }}
           onMouseEnter={e => {
-            e.currentTarget.style.background = '#AF751C';
-            e.currentTarget.style.borderColor = '#AF751C';
-            e.currentTarget.style.color = '#ffffff';
+            e.currentTarget.style.background = '#ffffff';
+            e.currentTarget.style.borderColor = '#ffffff';
+            e.currentTarget.style.color = '#AF751C';
           }}
           onMouseLeave={e => {
-            e.currentTarget.style.background = 'transparent';
-            e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.4)';
+            e.currentTarget.style.background = '#AF751C';
+            e.currentTarget.style.borderColor = '#AF751C';
             e.currentTarget.style.color = '#ffffff';
           }}
         >
@@ -75,20 +77,20 @@ const Footer = ({ setIsOpen }) => (
         <button
           type="button"
           onClick={() => setIsOpen && setIsOpen(true)}
-          className="px-6 sm:px-8 py-3 rounded-full font-bold text-[14px] sm:text-[15px] transition-all duration-300 shadow-sm cursor-pointer"
+          className="px-6 sm:px-8 py-3 rounded-full font-bold text-[14px] sm:text-[15px] transition-all duration-300 shadow-[0_4px_16px_rgba(175,117,28,0.4)] hover:-translate-y-0.5 cursor-pointer"
           style={{
-            background: 'transparent',
+            background: '#AF751C',
             color: '#ffffff',
-            border: '2px solid rgba(255, 255, 255, 0.4)',
+            border: '2px solid #AF751C',
           }}
           onMouseEnter={e => {
-            e.currentTarget.style.background = '#AF751C';
-            e.currentTarget.style.borderColor = '#AF751C';
-            e.currentTarget.style.color = '#ffffff';
+            e.currentTarget.style.background = '#ffffff';
+            e.currentTarget.style.borderColor = '#ffffff';
+            e.currentTarget.style.color = '#AF751C';
           }}
           onMouseLeave={e => {
-            e.currentTarget.style.background = 'transparent';
-            e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.4)';
+            e.currentTarget.style.background = '#AF751C';
+            e.currentTarget.style.borderColor = '#AF751C';
             e.currentTarget.style.color = '#ffffff';
           }}
         >

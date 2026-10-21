@@ -590,6 +590,23 @@
   font-weight: 400;
 }
 
+/* Hero Section Dark Inputs */
+.hero-section .lead-form-input {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1.5px solid rgba(255, 255, 255, 0.16);
+  color: #ffffff;
+}
+
+.hero-section .lead-form-input::placeholder {
+  color: #94a3b8;
+}
+
+.hero-section .lead-form-input:focus {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: #E0A953;
+  box-shadow: 0 0 0 3px rgba(175, 117, 28, 0.35);
+}
+
 .lead-form-btn {
   width: 100%;
   padding: 14px 24px;

@@ -114,13 +114,13 @@ const LeadForm = ({ formName = 'Hero Form', btnText = 'Submit Now' }) => {
 
   if (success) return (
     <div className="text-center py-6">
-      <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 bg-[#AF751C]/15 border-2 border-[#AF751C]">
-        <svg className="w-8 h-8 text-[#AF751C]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 bg-[#AF751C]/20 border-2 border-[#E0A953]">
+        <svg className="w-8 h-8 text-[#E0A953]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
         </svg>
       </div>
-      <h4 className="text-xl font-bold text-slate-900 mb-2">Thank You!</h4>
-      <p className="text-slate-600 text-sm font-medium">Our team will contact you shortly.</p>
+      <h4 className="text-xl font-bold text-white mb-2">Thank You!</h4>
+      <p className="text-neutral-300 text-sm font-medium">Our team will contact you shortly.</p>
     </div>
   )
 
@@ -154,12 +154,12 @@ const LeadForm = ({ formName = 'Hero Form', btnText = 'Submit Now' }) => {
         className="lead-form-input"
       />
 
-      {error && <p className="text-red-600 text-sm mb-3">{error}</p>}
+      {error && <p className="text-red-400 text-sm mb-3 font-medium">{error}</p>}
 
       <button
         type="submit"
         disabled={loading}
-        className="lead-form-btn"
+        className="lead-form-btn shadow-[0_4px_20px_rgba(175,117,28,0.4)]"
       >
         {loading ? 'Submitting...' : btnText}
       </button>
@@ -178,7 +178,7 @@ const LeadForm = ({ formName = 'Hero Form', btnText = 'Submit Now' }) => {
           className="cursor-pointer"
           style={{
             fontSize: '11.5px',
-            color: '#475569',
+            color: '#a1a1aa',
             lineHeight: 1.55,
             fontFamily: 'var(--font-poppins), Poppins, sans-serif',
           }}
@@ -187,7 +187,7 @@ const LeadForm = ({ formName = 'Hero Form', btnText = 'Submit Now' }) => {
           <a
             href="/privacy-policy"
             target="_blank"
-            style={{ color: '#AF751C', fontWeight: 700, textDecoration: 'underline' }}
+            style={{ color: '#E0A953', fontWeight: 700, textDecoration: 'underline' }}
           >
             privacy policy
           </a>{' '}
