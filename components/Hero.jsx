@@ -51,21 +51,21 @@ const Hero = ({ setIsOpen }) => {
       id="home"
       className="hero-section relative overflow-hidden"
       style={{
-        background: 'linear-gradient(180deg, #FFFFFF 0%, #FAF8F5 100%)',
+        background: 'linear-gradient(180deg, #FFFFFF 0%, #FAF9F6 50%, #F5F0E6 100%)',
         fontFamily: 'var(--font-poppins), Poppins, sans-serif',
       }}
     >
       <div className="w-full pt-[82px] pb-8 sm:pt-[88px] sm:pb-10 lg:pt-[98px] lg:pb-12 relative z-10">
 
         {/* Ambient subtle luxury gold glow */}
-        <div className="absolute top-[-60px] right-[-40px] w-80 sm:w-[500px] h-80 sm:h-[500px] bg-[#AF751C]/06 rounded-full blur-[100px] pointer-events-none" />
-        <div className="absolute bottom-[-60px] left-[-60px] w-72 sm:w-[450px] h-72 sm:h-[450px] bg-[#AF751C]/06 rounded-full blur-[90px] pointer-events-none" />
+        <div className="absolute top-[-60px] right-[-40px] w-80 sm:w-[500px] h-80 sm:h-[500px] bg-[#AF751C]/08 rounded-full blur-[100px] pointer-events-none" />
+        <div className="absolute bottom-[-60px] left-[-60px] w-72 sm:w-[450px] h-72 sm:h-[450px] bg-[#AF751C]/10 rounded-full blur-[90px] pointer-events-none" />
 
         <div className="container mx-auto px-3.5 sm:px-6" style={{ maxWidth: '1380px' }}>
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-10 items-start">
 
             {/* ══════════════════════════════════════════════════════
-                LEFT 50% (7 cols on lg): Pure Visual & Info
+                LEFT 50% (7 cols on lg): Pure Visual & Info Showcase
                ══════════════════════════════════════════════════════ */}
             <div className="lg:col-span-7 flex flex-col justify-between">
 
@@ -73,7 +73,7 @@ const Hero = ({ setIsOpen }) => {
               <div className="mb-2.5 sm:mb-3.5">
                 {/* Eyebrow Developer Badge */}
                 <div className="flex items-center gap-2 mb-1.5">
-                  <span className="text-[10px] sm:text-[11px] uppercase tracking-[1.5px] font-bold text-[#AF751C] bg-[#AF751C]/15 border border-[#AF751C]/35 px-2.5 py-0.5 rounded-full">
+                  <span className="text-[10px] sm:text-[11px] uppercase tracking-[1.5px] font-bold text-[#AF751C] bg-[#AF751C]/12 border border-[#AF751C]/35 px-2.5 py-0.5 rounded-full">
                     By Antriksh Group
                   </span>
                   <span className="text-gray-400 hidden xs:inline">•</span>
@@ -100,7 +100,7 @@ const Hero = ({ setIsOpen }) => {
                   </span>
                 </p>
 
-                {/* Offer Line (Only unique offer — Price, Typology & Status already in right strip) */}
+                {/* Offer Line */}
                 <div className="p-2.5 sm:px-3.5 sm:py-2 rounded-xl bg-white/90 border border-[#AF751C]/40 shadow-sm backdrop-blur-md">
                   <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1 text-xs sm:text-[12.5px]">
                     <span className="font-bold text-[#AF751C] flex items-center gap-1.5">
@@ -118,41 +118,43 @@ const Hero = ({ setIsOpen }) => {
                 </div>
               </div>
 
-              {/* ── 100% CLEAN IMAGE (Infinite circular carousel) ── */}
-              <div className="relative rounded-xl sm:rounded-2xl overflow-hidden border border-black/10 shadow-2xl bg-black">
-                {/* Visual Suggestion Overlay: Top-Left Floating Badge */}
-                <div className="absolute top-3 left-3 z-20 bg-black/60 backdrop-blur-md px-3.5 py-1.5 rounded-full text-[11px] sm:text-xs font-semibold tracking-wider text-white border border-white/20 shadow-lg flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#AF751C] animate-ping"></span>
-                  <span>Luxury. Location. Limited Inventory.</span>
-                </div>
+              {/* ── LUXURY GALLERY CENTERPIECE (With refined gold bezel framing) ── */}
+              <div className="p-[2px] rounded-2xl sm:rounded-3xl bg-gradient-to-tr from-[#AF751C]/40 via-amber-200/50 to-[#AF751C]/25 shadow-[0_16px_40px_rgba(0,0,0,0.12)]">
+                <div className="relative rounded-[14px] sm:rounded-[22px] overflow-hidden bg-black">
+                  {/* Visual Suggestion Overlay: Top-Left Floating Badge */}
+                  <div className="absolute top-3 left-3 z-20 bg-black/60 backdrop-blur-md px-3.5 py-1.5 rounded-full text-[11px] sm:text-xs font-semibold tracking-wider text-white border border-white/20 shadow-lg flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#AF751C] animate-ping"></span>
+                    <span>Luxury. Location. Limited Inventory.</span>
+                  </div>
 
-                <div 
-                  onTransitionEnd={handleTransitionEnd}
-                  className={`flex w-full ${
-                    isTransitioning ? 'transition-transform duration-700 ease-in-out' : 'transition-none'
-                  }`}
-                  style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-                >
-                  {extendedSlides.map((slide, idx) => (
-                    <div 
-                      key={`${slide.id}-${idx}`} 
-                      className="relative w-full h-[220px] xs:h-[250px] sm:h-[300px] md:h-[325px] lg:h-[340px] flex-shrink-0"
-                    >
-                      <Image
-                        src={slide.img}
-                        alt={slide.name}
-                        fill
-                        priority={idx === 1}
-                        className="object-cover"
-                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 55vw"
-                      />
-                    </div>
-                  ))}
+                  <div 
+                    onTransitionEnd={handleTransitionEnd}
+                    className={`flex w-full ${
+                      isTransitioning ? 'transition-transform duration-700 ease-in-out' : 'transition-none'
+                    }`}
+                    style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+                  >
+                    {extendedSlides.map((slide, idx) => (
+                      <div 
+                        key={`${slide.id}-${idx}`} 
+                        className="relative w-full h-[230px] xs:h-[260px] sm:h-[310px] md:h-[340px] lg:h-[360px] flex-shrink-0"
+                      >
+                        <Image
+                          src={slide.img}
+                          alt={slide.name}
+                          fill
+                          priority={idx === 1}
+                          className="object-cover"
+                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 55vw"
+                        />
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
 
-              {/* ── SLIDE SELECTOR TABS (Minimalist View Switcher) ── */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mt-2">
+              {/* ── SLIDE SELECTOR TABS (Modern Luxury Navigation Pills) ── */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 mt-3">
                 {heroSlides.map((slide, idx) => {
                   const isActive = activeSlide === idx
                   return (
@@ -163,10 +165,10 @@ const Hero = ({ setIsOpen }) => {
                         setIsTransitioning(true)
                         setCurrentIndex(idx + 1)
                       }}
-                      className={`py-2 px-2 rounded-lg text-xs font-bold transition-all cursor-pointer text-center border whitespace-nowrap ${
+                      className={`py-2 px-3 rounded-xl text-xs sm:text-[13px] font-bold transition-all duration-300 cursor-pointer text-center flex items-center justify-center gap-1.5 border whitespace-nowrap ${
                         isActive
-                          ? 'bg-[#AF751C] text-white border-[#AF751C] shadow-md'
-                          : 'bg-white text-[#1a1a1a] border-[#e2d5c0] hover:bg-[#FAF1E2] hover:text-[#AF751C] shadow-sm'
+                          ? 'bg-[#AF751C] text-white border-[#AF751C] shadow-md -translate-y-0.5'
+                          : 'bg-white text-slate-700 border-slate-200 hover:border-[#AF751C]/50 hover:bg-[#FAF8F5] hover:text-[#AF751C] shadow-xs'
                       }`}
                     >
                       <span>{slide.name}</span>
