@@ -109,7 +109,7 @@ const ContactForm = () => {
       <label style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', cursor: 'pointer' }}>
         <input type="checkbox" required defaultChecked style={{ accentColor: '#AF751C', marginTop: '2px', flexShrink: 0 }} />
         <span style={{ fontSize: '12px', color: '#777', fontFamily: F_SANS, lineHeight: 1.5 }}>
-          I agree to receive updates as per the <Link href="/privacy-policy" style={{ color: '#2563eb', textDecoration: 'underline' }}>Privacy Policy</Link>.
+          I agree to receive updates as per the <Link href="/privacy-policy" prefetch={false} style={{ color: '#2563eb', textDecoration: 'underline' }}>Privacy Policy</Link>.
         </span>
       </label>
 

@@ -44,7 +44,6 @@ module.exports = {
       },
       fontFamily: {
         sans: ['var(--font-sans)', 'Open Sans', 'sans-serif'],
-        serif: ['var(--font-serif)', 'Cormorant Garamond', 'serif'],
         jost: ['var(--font-jost)', 'Montserrat', 'sans-serif'],
         poppins: ['var(--font-poppins)', 'Poppins', 'sans-serif'],
       },

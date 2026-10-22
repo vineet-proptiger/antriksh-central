@@ -137,6 +137,7 @@ const Footer = ({ setIsOpen }) => (
       <div className="w-full flex justify-end text-[13.5px] sm:text-[14px] mb-4">
         <Link
           href="/privacy-policy"
+          prefetch={false}
           className="text-[#AF751C] hover:underline font-medium transition-colors duration-200"
         >
           Privacy Policy

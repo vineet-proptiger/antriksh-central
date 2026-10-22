@@ -285,7 +285,7 @@ const EnquireModal = ({ isOpen, setIsOpen }) => {
               />
               <label htmlFor="popup-privacy" style={{ fontSize: '12px', color: '#6b7280', lineHeight: 1.5, cursor: 'pointer' }}>
                 I agree to receive updates as per the{' '}
-                <Link href="/privacy-policy" style={{ color: '#AF751C', fontWeight: '600', textDecoration: 'underline' }}>Privacy Policy</Link>.
+                <Link href="/privacy-policy" prefetch={false} style={{ color: '#AF751C', fontWeight: '600', textDecoration: 'underline' }}>Privacy Policy</Link>.
               </label>
             </div>
 
