@@ -9,7 +9,6 @@ import Hero from '../components/Hero'
 const Overview = dynamic(() => import('../components/Overview'), { ssr: true })
 const Highlights = dynamic(() => import('../components/Highlights'), { ssr: true })
 const Pricing = dynamic(() => import('../components/Pricing'), { ssr: true })
-const Amenities = dynamic(() => import('../components/Amenities'), { ssr: true })
 const Location = dynamic(() => import('../components/Location'), { ssr: true })
 const MasterPlan = dynamic(() => import('../components/MasterPlan'), { ssr: true })
 const Downloads = dynamic(() => import('../components/Downloads'), { ssr: true })
@@ -20,6 +19,7 @@ const PaymentPlan = dynamic(() => import('../components/PaymentPlan'), { ssr: tr
 const FAQ = dynamic(() => import('../components/FAQ'), { ssr: true })
 const Footer = dynamic(() => import('../components/Footer'), { ssr: true })
 
+const Amenities = dynamic(() => import('../components/Amenities'), { ssr: false })
 const Gallery = dynamic(() => import('../components/Gallery'), { ssr: false })
 const EnquireModal = dynamic(() => import('../components/EnquireModal'), { ssr: false })
 const AosInit = dynamic(() => import('../components/AosInit'), { ssr: false })

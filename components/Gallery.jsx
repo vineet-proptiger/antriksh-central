@@ -1,10 +1,29 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { galleryImages } from '../lib/images'
 
 const Gallery = () => {
   const [lightbox, setLightbox] = useState(null)
+
+  // Prevent background scrolling and enable keyboard navigation when lightbox is open
+  useEffect(() => {
+    if (lightbox !== null) {
+      document.body.style.overflow = 'hidden'
+      const handleKeyDown = (e) => {
+        if (e.key === 'Escape') setLightbox(null)
+        if (e.key === 'ArrowRight') setLightbox((prev) => (prev + 1) % galleryImages.length)
+        if (e.key === 'ArrowLeft') setLightbox((prev) => (prev - 1 + galleryImages.length) % galleryImages.length)
+      }
+      window.addEventListener('keydown', handleKeyDown)
+      return () => {
+        document.body.style.overflow = ''
+        window.removeEventListener('keydown', handleKeyDown)
+      }
+    } else {
+      document.body.style.overflow = ''
+    }
+  }, [lightbox])
 
   // Use first 5 images for the 3 + 2 layout (as requested in HTML/screenshot)
   const topRowImages = galleryImages.slice(0, 3)
@@ -90,13 +109,14 @@ const Gallery = () => {
       {/* ── Interactive Fullscreen Lightbox ── */}
       {lightbox !== null && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-md p-4 animate-fadeIn"
+          className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/90 backdrop-blur-md p-4 animate-fadeIn"
           onClick={() => setLightbox(null)}
         >
           {/* Close Button */}
           <button
             onClick={() => setLightbox(null)}
-            className="absolute top-6 right-6 w-12 h-12 rounded-full bg-[#AF751C] hover:bg-[#0050d5] text-white text-2xl font-bold flex items-center justify-center transition-transform hover:scale-105 shadow-lg z-10"
+            className="absolute top-6 right-6 w-12 h-12 rounded-full bg-[#AF751C] hover:bg-[#915f14] text-white text-2xl font-bold flex items-center justify-center transition-transform hover:scale-105 shadow-lg z-20 cursor-pointer"
+            aria-label="Close"
           >
             ×
           </button>
@@ -127,7 +147,8 @@ const Gallery = () => {
               e.stopPropagation()
               setLightbox((lightbox - 1 + galleryImages.length) % galleryImages.length)
             }}
-            className="absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/15 hover:bg-white/30 border border-white/20 text-white text-2xl flex items-center justify-center transition-all hover:scale-110 shadow-lg"
+            className="absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/15 hover:bg-white/30 border border-white/20 text-white text-2xl flex items-center justify-center transition-all hover:scale-110 shadow-lg z-20 cursor-pointer"
+            aria-label="Previous"
           >
             ‹
           </button>
@@ -138,7 +159,8 @@ const Gallery = () => {
               e.stopPropagation()
               setLightbox((lightbox + 1) % galleryImages.length)
             }}
-            className="absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/15 hover:bg-white/30 border border-white/20 text-white text-2xl flex items-center justify-center transition-all hover:scale-110 shadow-lg"
+            className="absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/15 hover:bg-white/30 border border-white/20 text-white text-2xl flex items-center justify-center transition-all hover:scale-110 shadow-lg z-20 cursor-pointer"
+            aria-label="Next"
           >
             ›
           </button>

@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
 
 const amenities = [
@@ -47,6 +47,25 @@ const amenities = [
 
 const Amenities = () => {
   const [lightbox, setLightbox] = useState(null)
+
+  // Prevent background scrolling and enable keyboard navigation when lightbox is open
+  useEffect(() => {
+    if (lightbox !== null) {
+      document.body.style.overflow = 'hidden'
+      const handleKeyDown = (e) => {
+        if (e.key === 'Escape') setLightbox(null)
+        if (e.key === 'ArrowRight') setLightbox((prev) => (prev + 1) % amenities.length)
+        if (e.key === 'ArrowLeft') setLightbox((prev) => (prev - 1 + amenities.length) % amenities.length)
+      }
+      window.addEventListener('keydown', handleKeyDown)
+      return () => {
+        document.body.style.overflow = ''
+        window.removeEventListener('keydown', handleKeyDown)
+      }
+    } else {
+      document.body.style.overflow = ''
+    }
+  }, [lightbox])
 
   return (
     <section id="amenities" className="w-full py-10 md:py-14 font-poppins" style={{ background: '#f9f9f9' }}>
@@ -109,45 +128,43 @@ const Amenities = () => {
 
       </div>
 
-      {/* ── Interactive Lightbox Modal ── */}
+      {/* ── Interactive Fullscreen Lightbox (Same as Gallery) ── */}
       {lightbox !== null && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/92 backdrop-blur-md p-4 animate-fadeIn"
+          className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/90 backdrop-blur-md p-4 animate-fadeIn"
           onClick={() => setLightbox(null)}
         >
           {/* Close Button */}
           <button
             onClick={() => setLightbox(null)}
-            className="absolute top-5 right-5 w-12 h-12 rounded-full bg-[#AF751C] hover:bg-white hover:text-[#AF751C] text-white text-2xl font-bold flex items-center justify-center transition-all hover:scale-105 shadow-xl z-20 cursor-pointer"
+            className="absolute top-6 right-6 w-12 h-12 rounded-full bg-[#AF751C] hover:bg-[#915f14] text-white text-2xl font-bold flex items-center justify-center transition-transform hover:scale-105 shadow-lg z-20 cursor-pointer"
             aria-label="Close"
           >
             ×
           </button>
 
-          {/* Lightbox Container */}
+          {/* Image Container */}
           <div
-            className="relative w-full max-w-4xl h-[75vh] flex flex-col items-center justify-center"
+            className="relative w-full max-w-5xl h-[80vh] flex flex-col items-center justify-center"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-2xl bg-black/40 border border-white/10">
-              <Image
-                src={amenities[lightbox].image}
-                alt={amenities[lightbox].title}
-                fill
-                className="object-contain"
-                sizes="(max-width: 1024px) 100vw, 80vw"
-                priority
-              />
-            </div>
+            <Image
+              src={amenities[lightbox].image}
+              alt={amenities[lightbox].title}
+              fill
+              className="object-contain rounded-lg shadow-2xl"
+              sizes="100vw"
+              priority
+            />
 
-            {/* Bottom Caption */}
-            <div className="mt-4 text-center">
-              <h3 className="text-white font-bold text-lg sm:text-xl m-0 tracking-wide">
+            {/* Title & Counter */}
+            <div className="absolute -bottom-12 left-0 right-0 text-center text-white/90">
+              <span className="font-bold text-base sm:text-lg block tracking-wide">
                 {amenities[lightbox].title}
-              </h3>
-              <p className="text-neutral-400 text-xs sm:text-sm mt-1 uppercase tracking-widest font-medium">
-                {lightbox + 1} of {amenities.length}
-              </p>
+              </span>
+              <span className="text-white/60 text-xs sm:text-sm tracking-widest uppercase font-medium mt-0.5 block">
+                Amenity {lightbox + 1} of {amenities.length}
+              </span>
             </div>
           </div>
 
@@ -157,8 +174,8 @@ const Amenities = () => {
               e.stopPropagation()
               setLightbox((lightbox - 1 + amenities.length) % amenities.length)
             }}
-            className="absolute left-3 sm:left-8 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/15 hover:bg-[#AF751C] border border-white/20 text-white text-2xl flex items-center justify-center transition-all hover:scale-110 shadow-lg cursor-pointer"
-            aria-label="Previous image"
+            className="absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/15 hover:bg-white/30 border border-white/20 text-white text-2xl flex items-center justify-center transition-all hover:scale-110 shadow-lg z-20 cursor-pointer"
+            aria-label="Previous amenity"
           >
             ‹
           </button>
@@ -169,8 +186,8 @@ const Amenities = () => {
               e.stopPropagation()
               setLightbox((lightbox + 1) % amenities.length)
             }}
-            className="absolute right-3 sm:right-8 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/15 hover:bg-[#AF751C] border border-white/20 text-white text-2xl flex items-center justify-center transition-all hover:scale-110 shadow-lg cursor-pointer"
-            aria-label="Next image"
+            className="absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/15 hover:bg-white/30 border border-white/20 text-white text-2xl flex items-center justify-center transition-all hover:scale-110 shadow-lg z-20 cursor-pointer"
+            aria-label="Next amenity"
           >
             ›
           </button>
