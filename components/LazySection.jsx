@@ -5,15 +5,15 @@ import React, { useState, useEffect, useRef } from 'react'
  * LazySection
  * On-demand code & asset loading using native IntersectionObserver.
  * - Keeps network tab clean: Chunks/assets only load when user scrolls near the section.
- * - Acts like Next.js prefetch: rootMargin loads content 300px before it enters the viewport.
- * - Zero CLS: minHeight maintains layout stability so page doesn't jump.
- * - Anchor scroll friendly: retains ID while pending so hash links (#gallery, #pricing) work seamlessly.
+ * - Always preserves minHeight so the container never collapses to 0px while dynamic chunks download.
+ * - Zero CLS: maintains layout stability so subsequent sections aren't pulled up into the viewport prematurely.
+ * - Anchor scroll friendly: retains ID while pending so hash links work seamlessly.
  */
 export default function LazySection({
   children,
   id,
   minHeight = '350px',
-  rootMargin = '300px 0px',
+  rootMargin = '0px 0px 150px 0px',
   className = '',
 }) {
   const [isInView, setIsInView] = useState(false)
@@ -25,7 +25,6 @@ export default function LazySection({
     const el = containerRef.current
     if (!el) return
 
-    // IntersectionObserver natively supported in all modern browsers
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -62,7 +61,7 @@ export default function LazySection({
       // When not in view, maintain ID for anchor scrolling; once in view, inner section provides ID
       id={!isInView ? id : undefined}
       className={className}
-      style={!isInView ? { minHeight, contentVisibility: 'auto' } : undefined}
+      style={{ minHeight }}
     >
       {isInView ? children : null}
     </div>

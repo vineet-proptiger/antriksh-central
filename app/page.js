@@ -37,23 +37,23 @@ export default function Home() {
       <Hero setIsOpen={setIsOpen} />
       <Overview setIsOpen={setIsOpen} />
 
-      {/* ── Section 3: Highlights (Requested ~300px before reaching view) ── */}
-      <LazySection id="highlights" minHeight="450px">
+      {/* ── Section 3: Highlights ── */}
+      <LazySection id="highlights" minHeight="500px">
         <Highlights setIsOpen={setIsOpen} />
       </LazySection>
 
-      {/* ── Section 4: Gallery (Requested ~300px before reaching view) ── */}
+      {/* ── Section 4: Gallery ── */}
       <LazySection id="gallery" minHeight="550px">
         <Gallery setIsOpen={setIsOpen} />
       </LazySection>
 
       {/* ── Section 5: Price List ── */}
-      <LazySection id="pricing" minHeight="450px">
+      <LazySection id="pricing" minHeight="500px">
         <Pricing setIsOpen={setIsOpen} />
       </LazySection>
 
       {/* ── Section 6: Amenities ── */}
-      <LazySection id="amenities" minHeight="480px">
+      <LazySection id="amenities" minHeight="550px">
         <Amenities setIsOpen={setIsOpen} />
       </LazySection>
 
@@ -68,12 +68,12 @@ export default function Home() {
       </LazySection>
 
       {/* ── Section 9: About Developer ── */}
-      <LazySection id="developer" minHeight="380px">
+      <LazySection id="developer" minHeight="400px">
         <AboutDeveloper setIsOpen={setIsOpen} />
       </LazySection>
 
       {/* ── Section 10: Footer ── */}
-      <LazySection minHeight="300px">
+      <LazySection minHeight="350px">
         <Footer setIsOpen={setIsOpen} />
       </LazySection>
 

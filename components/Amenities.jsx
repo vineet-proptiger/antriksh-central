@@ -95,9 +95,13 @@ const Amenities = () => {
               className="group relative rounded-[20px] overflow-hidden h-[260px] sm:h-[280px] shadow-[0_8px_25px_rgba(0,0,0,0.06)] hover:shadow-[0_18px_38px_rgba(175,117,28,0.28)] hover:-translate-y-1.5 transition-all duration-500 cursor-pointer flex flex-col justify-between p-6 border border-black/5"
             >
               {/* Background Photo */}
-              <div 
-                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-110"
-                style={{ backgroundImage: `url(${item.image})` }}
+              <Image
+                src={item.image}
+                alt={item.title}
+                fill
+                loading="lazy"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
               />
 
               {/* Gradient Dark Overlay */}

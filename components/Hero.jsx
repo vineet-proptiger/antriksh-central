@@ -197,10 +197,10 @@ const Hero = ({ setIsOpen }) => {
                   <span className="text-neutral-400 font-bold text-[10px] sm:text-[11px] uppercase tracking-wider block mb-0.5">Price Starts At</span>
                   <div className="flex items-center gap-1.5">
                     <span className="relative flex h-2 w-2">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#E0A953] opacity-75"></span>
-                      <span className="relative inline-flex rounded-full h-2 w-2 bg-[#E0A953]"></span>
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+                      <span className="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
                     </span>
-                    <strong className="blink-price font-black text-[14.5px] sm:text-[18.5px] whitespace-nowrap tracking-tight text-[#E0A953]">
+                    <strong className="blink-price font-black text-[16.5px] sm:text-[20.5px] whitespace-nowrap tracking-tight text-white">
                       ₹ 4.25 Cr*
                     </strong>
                   </div>
