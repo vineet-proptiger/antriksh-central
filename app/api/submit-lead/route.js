@@ -122,13 +122,16 @@ export async function POST(request) {
       sheet_name: get('sheet_name'),
     })
 
-    fetch(SHEET_WEBHOOK, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: sheetPayload.toString(),
-    })
-      .then(r => console.log('[Sheet] status:', r.status))
-      .catch(e => console.error('[Sheet] error:', e.message))
+    try {
+      const sheetRes = await fetch(SHEET_WEBHOOK, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: sheetPayload.toString(),
+      })
+      console.log('[Sheet] status:', sheetRes.status)
+    } catch (e) {
+      console.error('[Sheet] error:', e.message)
+    }
 
     /* ── 2. Proptiger CRM (Disabled - Commented Out) ──
     let ptUrl = `${PROPTIGER_URL}?utm_source=${encodeURIComponent(utmSource)}&utm_medium=${encodeURIComponent(utmMedium)}&utm_campaign=${encodeURIComponent(utmCampaign)}&utm_term=${encodeURIComponent(utmTerm)}&utm_content=${encodeURIComponent(utmContent)}&gclid=${encodeURIComponent(gclid)}&gbraid=${encodeURIComponent(gbraid)}&wbraid=${encodeURIComponent(wbraid)}&campaign_name=${encodeURIComponent(campaignName)}&sourceDomain=Microsite`
